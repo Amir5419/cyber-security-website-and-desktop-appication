@@ -1,0 +1,74 @@
+{
+  "appId": "com.securelearn.desktop",
+  "productName": "SecureLearn Professional",
+  "copyright": "Copyright © 2025 SecureLearn",
+  "directories": {
+    "output": "dist-electron"
+  },
+  "files": [
+    "dist/**/*",
+    "public/electron.js",
+    "public/preload.js",
+    "public/splash.html",
+    "electron-server/**/*",
+    "server/services/**/*",
+    "node_modules/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "server/services",
+      "to": "services"
+    }
+  ],
+  "mac": {
+    "category": "public.app-category.developer-tools",
+    "icon": "public/assets/icon.icns",
+    "hardenedRuntime": true,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      }
+    ]
+  },
+  "win": {
+    "icon": "public/assets/icon.ico",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64", "ia32"]
+      }
+    ],
+    "publisherName": "SecureLearn"
+  },
+  "linux": {
+    "icon": "public/assets/icon.png",
+    "category": "Development",
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": ["x64"]
+      },
+      {
+        "target": "deb",
+        "arch": ["x64"]
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "installerIcon": "public/assets/icon.ico",
+    "uninstallerIcon": "public/assets/icon.ico",
+    "installerHeaderIcon": "public/assets/icon.ico",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "securelearn",
+    "repo": "desktop"
+  }
+}
